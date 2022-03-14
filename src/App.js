@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Board from './components/Board'
 import 'react-simple-keyboard/build/css/index.css';
@@ -14,21 +14,21 @@ const initialWordContainer = {
 
 function App() {
   const [ onRow, setOnRow ] = useState(1);
-  const [ currWord, setCurrWord ] = useState(initialWordContainer);
+  const [ wordGuessed, setwordGuessed ] = useState(initialWordContainer);
 
   const onCharSelected = value => {
-    if (currWord[onRow].length < 5) {
-      setCurrWord({...currWord, [onRow] : currWord[onRow] + value})
+    if (wordGuessed[onRow].length < 5) {
+      setwordGuessed({...wordGuessed, [onRow] : wordGuessed[onRow] + value})
     } 
   }
 
   const onBackSpace =  () => {
-    setCurrWord({...currWord, [onRow] : currWord[onRow].slice(0, -1)})
+    setwordGuessed({...wordGuessed, [onRow] : wordGuessed[onRow].slice(0, -1)})
   }
 
   const onWordEnter = () => {
-    if (currWord[onRow].length === 5) {
-      console.log('check if wordle',currWord[onRow])
+    if (wordGuessed[onRow].length === 5) {
+      console.log('check if wordle',wordGuessed[onRow])
       setOnRow(onRow + 1)
     }
   }
@@ -44,7 +44,7 @@ function App() {
     }
   }
 
-  console.log('word',currWord, 'row',onRow, 'word length',currWord.length)
+  console.log('word',wordGuessed, 'row',onRow, 'word length',wordGuessed.length)
 
 
 
@@ -53,7 +53,7 @@ function App() {
       <h1>Wordle Clone</h1>
       <Board 
         onKeyClick={onKeyClick}
-        currWord={currWord}
+        wordGuessed={wordGuessed}
         onRow={onRow}
       />
     </div>
