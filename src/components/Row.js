@@ -1,7 +1,18 @@
-function Row() {
+const holder = [0,1,2,3,4]
+
+function Row(props) {
+    const { word } = props
+
     return (
       <div className="row">
-        <div className="tile" id='1'>
+          {holder.map(char => word[char] ?
+            (<div className="tile" id='1'>
+                <p>{word[char]}</p>
+            </div>) 
+            :
+             (<div className="tile" id='1'></div> )  
+          )}
+        {/* <div className="tile" id='1'>
             <p>Letter</p>
         </div>
         <div className="tile" id='2'>
@@ -15,7 +26,7 @@ function Row() {
         </div>
         <div className="tile" id='5'>
             <p>Letter</p>
-        </div>
+        </div> */}
       </div>
     );
   }

@@ -1,61 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './App.css';
 import Board from './components/Board'
 import 'react-simple-keyboard/build/css/index.css';
 
-// const wordsArr = [
-//   new Array(5),
-//   new Array(5),
-//   new Array(5),
-//   new Array(5),
-//   new Array(5),
-//   new Array(5),
-// ]
-
-// const initialWordContainer = {
-//   1: new Array(5),
-//   2: new Array(5),
-//   3: new Array(5),
-//   4: new Array(5),
-//   5: new Array(5),
-//   6: new Array(5),  
-// }
+const initialWordContainer = {
+  1: "",
+  2: "",
+  3: "",
+  4: "",
+  5: "",
+  6: "",  
+}
 
 function App() {
-  const [ guess, setGuess ] = useState(0);
-  const [ wordGuess, setWordGuess ] = useState('');
-
- 
+  const [ onRow, setOnRow ] = useState(1);
+  const [ currWord, setCurrWord ] = useState(initialWordContainer);
 
   const onCharSelected = value => {
-    if (wordGuess.length <= 5) {
-      setWordGuess(wordGuess + value)
+    if (currWord[onRow].length < 5) {
+      setCurrWord({...currWord, [onRow] : currWord[onRow] + value})
     } 
   }
 
   const onBackSpace =  () => {
-    setWordGuess(wordGuess.slice(0, -1))
+    setCurrWord({...currWord, [onRow] : currWord[onRow].slice(0, -1)})
   }
 
   const onWordEnter = () => {
-    console.log('check if wordle',wordGuess)
+    if (currWord[onRow].length === 5) {
+      console.log('check if wordle',currWord[onRow])
+      setOnRow(onRow + 1)
+    }
   }
 
   const onKeyClick = event => {
     const { value } = event.target
     if (value === 'bksp') {
-      // console.log('delete')
       onBackSpace()
     } else if (value === 'enter') {
-      // console.log(wordGuess)
       onWordEnter()
     } else {
-      // console.log(value)
       onCharSelected(value)
     }
   }
 
-  console.log('word',wordGuess)
+  console.log('word',currWord, 'row',onRow, 'word length',currWord.length)
+
 
 
   return (
@@ -63,6 +53,8 @@ function App() {
       <h1>Wordle Clone</h1>
       <Board 
         onKeyClick={onKeyClick}
+        currWord={currWord}
+        onRow={onRow}
       />
     </div>
   );
