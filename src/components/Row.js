@@ -1,32 +1,17 @@
-const holder = [0,1,2,3,4]
+const charPlaces = [0,1,2,3,4]
 
 function Row(props) {
-    const { word } = props
+    const { word, row } = props
 
     return (
-      <div className="row">
-          {holder.map(char => word[char] ?
-            (<div className="tile" id='1'>
+      <div className='row' id={`row-${row}`}>
+          {charPlaces.map((char, index) => word[char] ?
+            (<div className="filled" id={`tile-${row}-${index + 1}`}>
                 <p>{word[char]}</p>
             </div>) 
             :
-             (<div className="tile" id='1'></div> )  
+             (<div className="empty" id={`tile-${row}-${index + 1}`}></div> )  
           )}
-        {/* <div className="tile" id='1'>
-            <p>Letter</p>
-        </div>
-        <div className="tile" id='2'>
-            <p>Letter</p>
-        </div>
-        <div className="tile" id='3'>
-            <p>Letter</p>
-        </div>
-        <div className="tile" id='4'>
-            <p>Letter</p>
-        </div>
-        <div className="tile" id='5'>
-            <p>Letter</p>
-        </div> */}
       </div>
     );
   }

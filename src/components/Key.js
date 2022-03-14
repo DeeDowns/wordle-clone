@@ -6,7 +6,24 @@ function Key(props) {
 
     return (
         <div className="key">
-            <button onClick={onKeyClick} name={charKey} value={value}>{charKey}</button>
+            {charKey === 'bksp' || charKey === 'enter' ? 
+                <button 
+                    onClick={onKeyClick} 
+                    name={charKey} 
+                    value={value}
+                    className='action'
+                    >
+                        {charKey}
+                </button>
+            :
+                <button 
+                    onClick={onKeyClick} 
+                    name={charKey} 
+                    value={value}
+                    >
+                        {charKey}
+                </button>
+            }
         </div>
     );
 }

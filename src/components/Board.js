@@ -2,16 +2,33 @@ import Row from './Row'
 import Keyboard from './Keyboard';
 
 function Board(props) {
-    const { onKeyClick, currWord, onRow } = props;
+    const { onKeyClick, wordGuessed } = props;
 
     return (
         <div className="board">
-            <Row word={currWord[1]}/>
-            <Row word={currWord[2]}/> 
-            <Row word={currWord[3]}/> 
-            <Row word={currWord[4]}/> 
-            <Row word={currWord[5]}/> 
-            <Row word={currWord[6]}/> 
+            <Row 
+                word={wordGuessed[1]}
+                row={1}
+            />
+            <Row 
+                word={wordGuessed[2]}
+                row={2}/> 
+            <Row 
+                word={wordGuessed[3]}
+                row={3}
+            /> 
+            <Row 
+                word={wordGuessed[4]}
+                row={4}
+            /> 
+            <Row 
+                word={wordGuessed[5]}
+                row={5}
+            /> 
+            <Row 
+                word={wordGuessed[6]}
+                row={6}
+            /> 
             <Keyboard onKeyClick={onKeyClick}/>
         </div>
     );
