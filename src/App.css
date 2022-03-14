@@ -20,16 +20,34 @@
   margin: 1% 0;
 }
 
-.tile {
+.filled,
+.empty  {
   width: 60px;
   height: 60px;
   border: 2px solid black;
+  text-align: center;;
 
+}
+
+.filled p {
+  font-size: 28px;
+  margin: 13px 0px;
 }
 
 .keyboard {
   display: flex;
   flex-direction: column;
+  width: 90%;
+}
+
+.keyboard button {
+  width: 30px;
+  height: 30px;
+}
+
+.keyboard button.action {
+  width: 48px;
+  height: 30px;
 }
 
 @media screen and (min-width: 600px) {
