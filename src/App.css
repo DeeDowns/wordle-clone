@@ -26,7 +26,19 @@
   height: 60px;
   border: 2px solid black;
   text-align: center;;
+}
 
+.filled.green {
+  background-color: green;
+}
+
+.filled.yellow {
+  background-color: yellow;
+}
+
+.filled.black {
+  background-color: black;
+  color: #fff
 }
 
 .filled p {
